@@ -7,11 +7,23 @@ import epi.test_framework.TimedExecutor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
 public class OfflineSampling {
   public static void randomSampling(int k, List<Integer> A) {
     // TODO - you fill in here.
+    Random rand = new Random();
+    for (int i = 0; i < A.size() - k; i++) {
+      Collections.swap(A , i, i + rand.nextInt(A.size () - i));
+    }
     return;
   }
+  /*
+  1,2,3,4,5,6
+  k = 2
+  chance of picking i = 1 / A.size()
+  generate random num from 0 - A.size() - 1 k times
+   */
   private static boolean randomSamplingRunner(TimedExecutor executor, int k,
                                               List<Integer> A)
       throws Exception {

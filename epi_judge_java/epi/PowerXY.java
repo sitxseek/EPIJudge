@@ -5,7 +5,16 @@ public class PowerXY {
   @EpiTest(testDataFile = "power_x_y.tsv")
   public static double power(double x, int y) {
     // TODO - you fill in here.
-    return 0.0;
+    double result = 1.0;
+    long power = y;
+    while (power != 0) {
+      if ((power & 1) != 0) {
+        result *= x;
+      }
+      x *= x;
+      power >>>= 1;
+    }
+    return result;
   }
 
   public static void main(String[] args) {
